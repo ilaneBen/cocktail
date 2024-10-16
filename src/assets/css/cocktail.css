@@ -1,0 +1,63 @@
+.home {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .cocktail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .cocktail-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .cocktail-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .cocktail-card:hover {
+    transform: translateY(-10px);
+  }
+  .cocktail-item:hover {
+    transform: translateY(-10px);
+  }
+  
+  .cocktail-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .cocktail-content {
+    padding: 15px;
+  }
+  
+  .cocktail-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .cocktail-instructions {
+    font-size: 14px;
+    color: #666;
+  }
+  
