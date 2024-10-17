@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Utilisation du hook useParams pour obtenir l'ID du cocktail
+import { Link, useParams } from 'react-router-dom'; // Utilisation du hook useParams pour obtenir l'ID du cocktail
 
 const CocktailDetail = () => {
   const { id } = useParams(); // Récupérer l'ID du cocktail depuis l'URL
@@ -42,7 +42,7 @@ const CocktailDetail = () => {
           <h3>Type: {cocktail.strAlcoholic}</h3>
           <h3>Instructions</h3>
           <p>{cocktail.strInstructions}</p>
-
+          
           <h3>Ingrédients</h3>
           <ul>
             {Object.keys(cocktail)
@@ -50,6 +50,7 @@ const CocktailDetail = () => {
               .map((ingredientKey, index) => {
                 const ingredient = cocktail[ingredientKey];
                 return (
+                  <Link to={`/ingredient/${ingredient}`}>
                   <li key={index}>
                     <img
                       src={getIngredientImageUrl(ingredient)}
@@ -58,6 +59,7 @@ const CocktailDetail = () => {
                     />
                     {ingredient} {cocktail[`strMeasure${ingredientKey.slice(13)}`] && ` - ${cocktail[`strMeasure${ingredientKey.slice(13)}`]}`}
                   </li>
+                  </Link>
                 );
               })}
           </ul>
