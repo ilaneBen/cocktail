@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/css/cocktail.css'; // Assure-toi de créer et d'importer le fichier CSS
+import cocktail1 from './cocktail'
+import { Link } from 'react-router-dom'; // Importer Link pour la navigation
+
 
 const Home = () => {
   const [cocktails, setCocktails] = useState([]); // Pour stocker les cocktails récupérés
@@ -43,16 +46,21 @@ const Home = () => {
         {loading ? (
           <p>Chargement des cocktails...</p>
         ) : (
-          <div className="cocktail-grid">
-            {cocktails.map((cocktail) => (
-              <div key={cocktail.idDrink} className="cocktail-card">
-                <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="cocktail-image" />
-                <div className="cocktail-content">
-                  <h3 className="cocktail-title">{cocktail.strDrink}</h3>
-                  <p className="cocktail-instructions">{cocktail.strInstructions}</p>
-                </div>
-              </div>
-            ))}
+          <div className="cocktail-flex">
+          {cocktails.map((cocktail) => (
+                  <div key={cocktail.idDrink} className="cocktail-card">
+                    {/* Utiliser Link pour créer une route dynamique */}
+                    <Link to={`/cocktail/${cocktail.idDrink}`}>
+                      <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="cocktail-image" />
+                      <div className="cocktail-content">
+                        <h3 className="cocktail-title">{cocktail.strDrink}</h3>
+                        <p className="cocktail-title">{cocktail.strCategory}</p>
+                        <p className="cocktail-title">{cocktail.strAlcoholic}</p>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+           
           </div>
         )}
       </div>
