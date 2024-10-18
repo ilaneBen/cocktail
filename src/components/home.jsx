@@ -18,6 +18,7 @@ const Home = () => {
       console.error(`Erreur lors de la récupération des cocktails avec l'ingrédient ${ingredient}:`, error);
       return [];
     }
+    
   };
 
   // Fonction pour récupérer les cocktails par plusieurs ingrédients
@@ -26,11 +27,8 @@ const Home = () => {
 
     setLoading(true);
     setError('');
- const ingredients = ingredientInput
-      .split(/[\s,]+/) // Diviser par espaces et virgules
-      .map(ing => ing.trim().toLowerCase()) // Supprimer les espaces supplémentaires et mettre en minuscules
-      .filter(ing => ing); // Supprimer les éléments vides
-       let commonCocktails = [];
+    const ingredients = ingredientInput.split(' ').map(ing => ing.trim().toLowerCase()); // Diviser les ingrédients par virgules
+    let commonCocktails = [];
     console.log(ingredients)
 
     try {
@@ -120,8 +118,8 @@ const Home = () => {
           <p>{error}</p>
         ) : cocktails.length > 0 ? (
           <div className="cocktail-flex">
-            {cocktails.map((cocktail) => (
-              <div key={cocktail.idDrink} className="cocktail-card">
+            {cocktails.map((cocktail,index) => (
+              <div key={index} className="cocktail-card">
                 <Link to={`/cocktail/${cocktail.idDrink}`}>
                   <img
                     src={cocktail.strDrinkThumb}
